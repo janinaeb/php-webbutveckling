@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);  
+error_reporting(E_ALL);
+
+session_start();
 
 // Dagens namn på svenska
 $dayOfWeek = date("N");
@@ -80,14 +84,22 @@ $time = date("H\:i\:s");
 
 
 
-// Vid submit
+
 $errorMessage = "";
 
-if ($_SERVER["QUERY_STRING"] == "logout") {
+if ($_SERVER["QUERY_STRING"] == "logout" && $_SESSION["logged-in"] == true) {
 	$errorMessage = "Du har nu loggat ut";
+	
+	// "Stäng av" inloggad
+	$_SESSION["logged-in"] = false;
+	
 }
 
+// Vid submit
 if (isset($_POST["login"])) {
+	// Återställ meddelandet efter utloggning
+	$errorMessage = "";
+	
 	// Testar om användarnamn eller lösenord är tomma
 	if ($_POST["user"] == "") {
 		$errorMessage = "Användarnamn saknas";
@@ -99,15 +111,21 @@ if (isset($_POST["login"])) {
 	else if ($_POST["user"] != "Admin" || $_POST["pass"] != "Password") {
 		$errorMessage = "Felaktigt användarnamn och/eller lösenord";
 	}
-	// Bestämmer om formuläret ska visas eller inte
 	
-	if ($errorMessage == "" || $errorMessage == "Du har nu loggat ut") {
-		$errorMessage = "clear";
+	// Bestämmer om formuläret ska visas eller inte
+	if ($errorMessage == "") {
+		$errorMessage = "Inloggning lyckades";
+		
+		// Spara inloggning i sessionen
+		$_SESSION["logged-in"] = true;
 	}
+	// Spara användarnamn
+	$_SESSION["username"] = $_POST["user"];
 }
 
 
-if ($errorMessage == "clear") {
+if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"] == true) {
+	
 	// Visa inloggad-sidan
 	echo "<!DOCTYPE html>
 		<html lang='sv'>
@@ -117,16 +135,24 @@ if ($errorMessage == "clear") {
 			</head>
 			<body>
 				<h1>Laboration 1 - jb222qp</h1>
-				<h2>" . $_POST["user"] . " är inloggad</h2>
-				<p>$message</p>
-				<a href='" . $_SERVER["PHP_SELF"] . "?logout'>Logga ut</a>
+				<h2>" . $_SESSION['username'] . " är inloggad</h2>
+				<p>$errorMessage</p>
+				<a href='" . $_SERVER['PHP_SELF'] . "?logout'>Logga ut</a>
 				<p>$dayOfWeek, den $day $month år $year. Klockan är [$time].</p>
 			
 			</body>
 		</html>
 	";
+	// Reset errorMessage till ev. nästa visning av sidan
+	$errorMessage = "";
 	
 } else {
+	// Spara användarnamn vid fel-inlogg
+	$user = "";
+	if (isset($_POST["user"])) {
+		$user = $_POST["user"];
+	}
+	
 	// Skriv ut dokumentet med formulär
 	echo "<!DOCTYPE html>
 		<html lang='sv'>
@@ -144,7 +170,7 @@ if ($errorMessage == "clear") {
 					<p>$errorMessage</p>
 					
 					<label for='user'>Användarnamn: </label>
-					<input type='text' id='user' name='user' value='" . $_POST["user"] . "' />
+					<input type='text' id='user' name='user' value='$user' />
 					
 					<label for='pass'>Lösenord: </label>
 					<input type='password' id='pass' name='pass' />
