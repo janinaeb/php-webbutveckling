@@ -1,0 +1,65 @@
+body {
+	background: black;
+	font-family: "Lucida Grande";
+}
+
+#container {
+	background: url("bg-smaller.jpg") no-repeat scroll;
+	background-size: 100%;
+	padding: 20px 5%;
+	margin: 0px;
+	padding-bottom: 30%;
+	overflow: hidden;
+	
+}
+fieldset {
+	padding: 0 30px 30px 30px;
+	width: 45%;
+	border: none;
+}
+legend {
+	margin-left: -33px;
+	font-weight: bolder;
+	padding-bottom: 20px;
+}
+input {
+	display: block;
+	margin-bottom: 10px;
+}
+#dateString {
+	margin-top: 60px;
+	text-align: center;
+}
+
+#menu a {
+	display: block;
+	padding: 10px;
+	background: gray;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	border: 1px solid black;
+	border-bottom: none;
+}
+#menu li a:hover {
+	background: black;
+	color: green;
+}
+#menu ul {
+	float: left;
+	list-style: none;
+	width: 120px;
+	margin: 0;
+	margin-top: 20px;
+	padding: 0;
+	border-bottom: 1px solid black;
+}
+#content {
+	width: 600px;
+	height: 300px;
+	border: 1px solid black;
+	background: white;
+	position: relative;
+	left: 120px;
+	top: 20px;
+}
