@@ -1,0 +1,77 @@
+body {
+	color: white;
+	font-family: "Lucida Grande";
+}
+#container {
+	/*background: url("bg-smaller.jpg") no-repeat scroll;*/
+	background: silver;
+	background-size: 100%;
+	padding: 20px 5%;
+	margin: auto;
+	padding-bottom: 30%;
+	width: 900px;
+	overflow: auto;
+}
+input {
+	display: block;
+	margin-bottom: 10px;
+}
+#dateString {
+	margin-top: 60px;
+	text-align: center;
+}
+
+#menu a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	border: 1px solid white;
+	border-bottom: none;
+}
+#menu ul {
+	list-style: none;
+	width: 120px;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid white;
+}
+#menu {
+	float: left;
+}
+#content {
+	max-width: 780px;
+	width: 80%;
+	padding: 0px;
+	margin-left: 120px;
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid black;
+	background: gray;
+}
+#content h2 {
+	margin-top: 0;
+	
+}
+.entry {
+	border-bottom: 1px solid black;
+	padding-top: 10px;
+}
+.user {
+	font-size: smaller;
+	border-top: 1px solid silver;
+}
+.entryLinks {
+	float: right;
+	width: 120px;
+	height: 150px;
+	padding: 10px;
+}
+.entryLinks a {
+	display: block;
+	width: 100px;
+	color: red;
+}
+.cancel {
+	text-decoration: none;
+}
