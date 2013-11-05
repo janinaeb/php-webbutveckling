@@ -1,0 +1,89 @@
+#container {
+	padding: 20px 5%;
+	margin: auto;
+	padding-bottom: 30%;
+	width: 900px;
+	overflow: hidden;
+}
+input {
+	display: block;
+	margin-bottom: 10px;
+}
+#dateString {
+	margin-top: 60px;
+	text-align: center;
+}
+
+#menu a {
+	display: block;
+	padding: 10px;
+	border: 1px solid silver;
+	border-bottom: none;
+	text-decoration: none;
+	color: gray;
+}
+#menu a:hover {
+	color: black;
+}
+#menu ul {
+	list-style: none;
+	width: 120px;
+	margin: 10px 0 0 0;
+	padding: 0;
+	border-bottom: 1px solid silver;
+}
+#menu {
+	float: left;
+}
+#content {
+	margin-top: 20px;
+}
+#content h2 {
+	margin-top: 0;
+	
+}
+.entry {
+	border-bottom: 1px solid black;
+	padding-top: 10px;
+	
+}
+.entryContent {
+	width: 600px;
+}
+.user {
+	font-size: smaller;
+	border-top: 1px solid white;
+	padding: 5px 0 0 0;
+}
+.entryLinks {
+	float: right;
+	width: 120px;
+	height: 50px;
+	padding: 10px;
+	position: relative;
+	left: 30px;
+}
+.entryLinks a {
+	display: block;
+	width: 100px;
+	color: red;
+}
+.cancel {
+	text-decoration: none;
+}
+#message {
+	padding: 20px 0;
+}
+.commentLinks {
+	float: right;
+	position: relative;
+	margin-top: 3px;
+	margin-right: -220px;
+	width: 110px;
+	font-size: smaller;
+	display: block;
+}
+
+.margin {
+	margin: 10px 0;
+}
